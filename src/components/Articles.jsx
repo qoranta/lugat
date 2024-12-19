@@ -31,11 +31,22 @@ const json2html = (input, word, dictEntry) => {
   return input;
 }
 
-const Articles = ({ result }) => {
-  return (
+const accentize = (word, article) => {
+  var pos = article.accent_pos;
+  if (pos) {
+      return word.substring(0, pos) + "\u0301" + word.substring(pos);
+  } else {
+      return word;
+  }
+}
 
+const Articles = ({ result, skipWord }) => {
+  return (
         <div className="translation__desc">{result._source.articles?.map((article, index) => (
-                      <div key={`article-${result._source.word + index}`} dangerouslySetInnerHTML={{__html: json2html(article.text, result._source.word, result._source)}}>
+                      <div key={`article-${result._source.word + index}`}>
+                        {!skipWord && (<b>{accentize(result._source.word, article)}</b>)}
+                        <div className="article" dangerouslySetInnerHTML={{__html: json2html(article.text, result._source.word, result._source)}}>
+                        </div>
                       </div>
                   ))}
         </div>

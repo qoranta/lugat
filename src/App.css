@@ -5,6 +5,7 @@ body {
 .translation {
   display: flex;
   margin-bottom: 1rem;
+  font-size: 0.75rem;
 }
 .translation img {
   width: 10rem;
@@ -19,7 +20,6 @@ body {
 }
 
 .translation__desc {
-  font-size: 0.75rem;
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -33,6 +33,10 @@ body {
 
 .detailed_transalation {
   padding: 1rem;
+}
+
+.article {
+  padding-left: 1rem;
 }
 
 .centered {
@@ -98,6 +102,8 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+
+.translation__desc stress {color: crimson;font-style: italic;}
 
 .suggestion-item {
   padding: 12px 16px;

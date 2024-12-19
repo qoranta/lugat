@@ -180,7 +180,7 @@ export const Dictionary = () => {
                       <div dangerouslySetInnerHTML={{__html: item._source.word.substring(0, inputValue.length) + '<b>' + item._source.word.substring(inputValue.length) + '</b>'}}>
                       </div>
                     </div>
-                    <Articles result={item}/>
+                    <Articles result={item} skipWord={true}/>
                   </section>
                 </div>
               </div>
@@ -198,7 +198,6 @@ export const Dictionary = () => {
       </div>
       {selectedItem != null && (
         <div className="detailed_transalation">
-            <b>{selectedItem._source.word}</b>
             <Articles result={selectedItem}/>         
         </div>
       )}
