@@ -42,10 +42,10 @@ const accentize = (word, article) => {
 
 const Articles = ({ result, skipWord }) => {
   return (
-        <div className="translation__desc">{result._source.articles?.map((article, index) => (
-                      <div key={`article-${result._source.word + index}`}>
-                        {!skipWord && (<b>{accentize(result._source.word, article)}</b>)}
-                        <div className="article" dangerouslySetInnerHTML={{__html: json2html(article.text, result._source.word, result._source)}}>
+        <div className="translation__desc">{result.articles?.map((article, index) => (
+                      <div key={`article-${result.word + index}`}>
+                        {!skipWord && (<b>{accentize(result.word, article)}</b>)}
+                        <div className="article" dangerouslySetInnerHTML={{__html: json2html(article.text, result.word, result)}}>
                         </div>
                       </div>
                   ))}

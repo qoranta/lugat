@@ -27,7 +27,7 @@ export const Dictionary = () => {
     )
       .then((res) => res.json())
       .then((translationsData) => {
-        return translationsData.hits.hits;
+        return translationsData ? translationsData : [];
       });
   };
 
@@ -65,7 +65,7 @@ export const Dictionary = () => {
 
   const handleSelectItem = (item) => {
     setSelectedItem(item)
-    setInputValue(item._source.word);
+    setInputValue(item.word);
     setSuggestions([]);
     setIsOpen(false);
     setSelectedIndex(-1);
@@ -167,17 +167,17 @@ export const Dictionary = () => {
           >
             {suggestions.map((item, index) => (
               <div
-                key={item._source.word + index}
+                key={item.word + index}
                 id={`suggestion-${index}`}
                 role="option"
                 aria-selected={index === selectedIndex}
                 className={`suggestion-item ${index === selectedIndex ? 'selected' : ''}`}
                 onClick={(e) => { handleSelectItem(item)}}
               >
-                <div className="translation" key={item._source.word}>
+                <div className="translation" key={item.word}>
                   <section className="translation__info">
                     <div className="translation__title">
-                      <div dangerouslySetInnerHTML={{__html: item._source.word.substring(0, inputValue.length) + '<b>' + item._source.word.substring(inputValue.length) + '</b>'}}>
+                      <div dangerouslySetInnerHTML={{__html: item.word.substring(0, inputValue.length) + '<b>' + item.word.substring(inputValue.length) + '</b>'}}>
                       </div>
                     </div>
                     <Articles result={item} skipWord={true}/>
